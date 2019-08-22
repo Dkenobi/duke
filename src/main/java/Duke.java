@@ -2,10 +2,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Duke {
-    private List<String> tasksList;
+    private List<Task> tasksList;
 
     public Duke(){
-        tasksList  = new ArrayList<String>();
+        tasksList  = new ArrayList<Task>();
     }
 
     public void printWelcomeMessage()  {
@@ -25,12 +25,16 @@ public class Duke {
     }
 
     public void enterCommand(String string) {
-        switch(string)
+        String[] splited = string.split("\\s+");
+
+        switch(splited[0])
         {
             case "bye": bye();
                 break;
             case "list": getTasksList();
                 break;
+            case "done": doneTask(Integer.parseInt(splited[1]));
+            break;
             default:
                 addToList(string);
         }
@@ -49,7 +53,7 @@ public class Duke {
 
     private void addToList(String message) {
         printLine();
-        tasksList.add(message);
+        tasksList.add(new Task(message));
         echo("added: " + message);
         printLine();
     }
@@ -57,9 +61,18 @@ public class Duke {
     private void getTasksList(){
         int index = 1;
         printLine();
-        for(var x: tasksList){
-            echo(index++ + ". " + x);
+        echo("Here are the tasks in your list. ");
+        for (var task: tasksList){
+            echo(index++ + ". [" + task.getStatusIcon() + "] " + task.description);
         }
+        printLine();
+    }
+
+    private void doneTask(int index) {
+        int zeroIndex = index - 1;
+        printLine();
+        tasksList.get(zeroIndex).isDone = true;
+        echo("Nice I've marked this task as done: \n" + " [" + tasksList.get(zeroIndex).getStatusIcon() + "] " + tasksList.get(zeroIndex).description);
         printLine();
     }
 
