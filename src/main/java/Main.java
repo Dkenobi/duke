@@ -11,12 +11,7 @@ public class Main {
         duke.printWelcomeMessage();
 
         while(!(input = reader.readLine()).isEmpty()) {
-            if (input.equals("bye")){
-                duke.echo("Bye. Hope to see you again soon!");
-                System.exit(0);
-            }
-            else
-                duke.echo(input);
+            duke.enterCommand(input);
         }
     }
 }
