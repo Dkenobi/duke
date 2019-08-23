@@ -18,62 +18,61 @@ public class Duke {
         System.out.println(logo);
         System.out.println("Hello! I'm Duke\n" +
                 "What can I do for you?");
+        printLine();
     }
 
-    private static void printLine() {
+    public void printLine() {
         System.out.println("____________________________________________________________");
     }
 
-    public void enterCommand(String string) {
-        String[] splited = string.split("\\s+");
+    public String enterCommand(String input) {
+        String[] splitString = input.split("\\s+");
 
-        switch(splited[0])
+        switch(splitString[0])
         {
-            case "bye": bye();
-                break;
-            case "list": getTasksList();
-                break;
-            case "done": doneTask(Integer.parseInt(splited[1]));
-            break;
+            case "bye": return bye();
+//            System.exit(0);
+            case "list": return getTasksList();
+            case "done": return doneTask(Integer.parseInt(splitString[1]));
             default:
-                addToList(string);
+                return addToList(input);
         }
     }
 
-    private void bye() {
-        printLine();
-        echo("Bye. Hope to see you again soon!");
-        printLine();
-        System.exit(0);
+    private String bye() {
+        return "Bye. Hope to see you again soon!";
     }
 
-    private void echo(String message){
+    private void echo(String message) {
         System.out.println(message);
     }
 
-    private void addToList(String message) {
-        printLine();
+    private String addToList(String message) {
         tasksList.add(new Task(message));
-        echo("added: " + message);
-        printLine();
+        return "added: " + message;
     }
 
-    private void getTasksList(){
+    private String getTasksList(){
+        String listString;
         int index = 1;
-        printLine();
-        echo("Here are the tasks in your list. ");
+
+        listString = "Here are the tasks in your list.";
         for (var task: tasksList){
-            echo(index++ + ". [" + task.getStatusIcon() + "] " + task.description);
+            listString += "\n"+ index++ + ". [" + task.getStatusIcon() + "] " + task.description;
         }
-        printLine();
+        return listString;
     }
 
-    private void doneTask(int index) {
+    private String doneTask(int index) {
         int zeroIndex = index - 1;
-        printLine();
+
         tasksList.get(zeroIndex).isDone = true;
-        echo("Nice I've marked this task as done: \n" + " [" + tasksList.get(zeroIndex).getStatusIcon() + "] " + tasksList.get(zeroIndex).description);
-        printLine();
+        return "Nice I've marked this task as done: \n"
+                + " [" + tasksList.get(zeroIndex).getStatusIcon() + "] "
+                + tasksList.get(zeroIndex).description;
     }
 
+    public String testString(String string) {
+        return string;
+    }
 }

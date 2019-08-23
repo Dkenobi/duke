@@ -11,7 +11,12 @@ public class Main {
         duke.printWelcomeMessage();
 
         while(!(input = reader.readLine()).isEmpty()) {
-            duke.enterCommand(input);
+            duke.printLine();
+            System.out.println(duke.enterCommand(input));
+            duke.printLine();
+
+            if (input.equals("bye"))
+                System.exit(0);
         }
     }
 }
