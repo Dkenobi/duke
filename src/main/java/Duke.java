@@ -68,7 +68,7 @@ public class Duke {
 
         tasksList.get(zeroIndex).isDone = true;
         return "Nice I've marked this task as done: \n"
-                + " [" + tasksList.get(zeroIndex).getStatusIcon() + "] "
+                + "[" + tasksList.get(zeroIndex).getStatusIcon() + "] "
                 + tasksList.get(zeroIndex).description;
     }
 
