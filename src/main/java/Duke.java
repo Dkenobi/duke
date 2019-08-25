@@ -31,11 +31,10 @@ public class Duke {
         switch(splitString[0])
         {
             case "bye": return bye();
-//            System.exit(0);
             case "list": return getTasksList();
             case "done": return doneTask(Integer.parseInt(splitString[1]));
             default:
-                return addToList(input);
+                return addTaskToList(input);
         }
     }
 
@@ -43,11 +42,7 @@ public class Duke {
         return "Bye. Hope to see you again soon!";
     }
 
-    private void echo(String message) {
-        System.out.println(message);
-    }
-
-    private String addToList(String message) {
+    private String addTaskToList(String message) {
         tasksList.add(new Task(message));
         return "added: " + message;
     }
@@ -70,9 +65,5 @@ public class Duke {
         return "Nice I've marked this task as done: \n"
                 + "[" + tasksList.get(zeroIndex).getStatusIcon() + "] "
                 + tasksList.get(zeroIndex).description;
-    }
-
-    public String testString(String string) {
-        return string;
     }
 }
