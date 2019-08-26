@@ -1,14 +1,17 @@
 import model.Task;
+import model.ToDo;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class Duke {
     public static void main(String[] args) throws IOException {
         String input;
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-
 
         TaskList taskList = new TaskList();
         printWelcomeMessage();
@@ -18,7 +21,7 @@ public class Duke {
             System.out.println(enterCommand(taskList,input));
             printLine();
 
-            if (input.equals("bye"))
+            if (input.contains("bye"))
                 System.exit(0);
         }
     }
@@ -58,8 +61,22 @@ public class Duke {
     }
 
     private static String addTaskToList(TaskList taskList, String message) {
-        taskList.addTaskToList(new Task(message));
-        return "added: " + message;
+
+        String[] splitString = message.split("\\s+");
+        ArrayList<String> listArgs = new ArrayList<>(Arrays.asList(splitString));
+        listArgs.remove(0);
+        String description = String.join(" ",listArgs);
+
+        switch(splitString[0])
+        {
+            case "todo":
+                int id = taskList.addTaskToList(new ToDo(description,"[T]"));
+                return "Got it. I've added this task: \n"
+                        + taskList.getTask(id).toString()
+                        + "\nNow you have " + taskList.getListSize() +" tasks in the list.";
+            default:
+                return "Error wrong command";
+        }
     }
 
 }
