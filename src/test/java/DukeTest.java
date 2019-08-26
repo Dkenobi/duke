@@ -1,3 +1,4 @@
+import model.Task;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -8,14 +9,12 @@ class DukeTest {
     
     @Test
     void testByeCommand(){
-        Duke dukeTest = new Duke();
-        assertEquals("Bye. Hope to see you again soon!", dukeTest.enterCommand("bye"));
+        assertEquals("Bye. Hope to see you again soon!", Duke.enterCommand(new TaskList(),"bye"));
     }
 
     @Test
     void testInputCommand(){
-        Duke dukeTest = new Duke();
-        assertEquals(dukeAddedString + "Read book", dukeTest.enterCommand("Read book"));
+        assertEquals(dukeAddedString + "Read book", Duke.enterCommand(new TaskList(),"Read book"));
     }
 
     @Test
@@ -27,12 +26,11 @@ class DukeTest {
         String dukeDoneList = "Nice I've marked this task as done: \n" +
                 "[✓] watch GOT";
 
-        Duke dukeTest = new Duke();
-        dukeTest.enterCommand("read book");
-        dukeTest.enterCommand("watch GOT");
-        assertEquals(duekeTestList, dukeTest.enterCommand("list"));
-        assertEquals(dukeDoneList, dukeTest.enterCommand("done 2"));
+        TaskList taskList = new TaskList();
+
+        Duke.enterCommand(taskList,"read book");
+        Duke.enterCommand(taskList,"watch GOT");
+        assertEquals(duekeTestList, Duke.enterCommand(taskList,"list"));
+        assertEquals(dukeDoneList, Duke.enterCommand(taskList,"done 2"));
     }
-
-
 }
