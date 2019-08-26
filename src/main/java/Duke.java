@@ -18,9 +18,13 @@ public class Duke {
 
         while(!(input = reader.readLine()).isEmpty()) {
             printLine();
-            System.out.println(enterCommand(taskList,input));
+            try {
+                System.out.println(enterCommand(taskList, input));
+            }
+            catch (DukeBaseException e){
+                System.out.println(e.getMessage());
+            }
             printLine();
-
         }
     }
 
@@ -41,7 +45,7 @@ public class Duke {
         System.out.println("____________________________________________________________");
     }
 
-    public static String enterCommand(TaskList taskList, String input) {
+    public static String enterCommand(TaskList taskList, String input) throws DukeBaseException {
         String[] splitString = input.split("\\s+");
 
         switch(splitString[0])
@@ -60,10 +64,9 @@ public class Duke {
         return "Bye. Hope to see you again soon!";
     }
 
-    private static String addTaskToList(TaskList taskList, String message) {
+    private static String addTaskToList(TaskList taskList, String message) throws DukeBaseException {
 
         int id;
-
         String[] splitString = message.split("\\s+");
         ArrayList<String> descriptionArgs = new ArrayList<>(Arrays.asList(splitString));
         descriptionArgs.remove(0);
@@ -72,12 +75,16 @@ public class Duke {
         switch(splitString[0])
         {
             case "todo":
+                if (description.equals(""))
+                    throw new DukeException.ToDoExceptionDuke();
                 id = taskList.addTaskToList(new ToDo(description,"[T]"));
                 return "Got it. I've added this task: \n"
                         + taskList.getTask(id).toString()
                         + "\nNow you have " + taskList.getListSize() +" tasks in the list.";
 
             case "deadline":
+                if (description.equals(""))
+                    throw new DukeException.DeadlineException();
                 String[] splitByBy = description.split("/by ");
                 id = taskList.addTaskToList(new Deadlines(splitByBy[0],"[D]",splitByBy[1]));
                 return "Got it. I've added this task: \n"
@@ -85,15 +92,17 @@ public class Duke {
                         + "\nNow you have " + taskList.getListSize() +" tasks in the list.";
 
             case "event":
+                if (description.equals(""))
+                    throw new DukeException.EventException();
                 String[] splitByAt = description.split("/at ");
-                id = taskList.addTaskToList(new Event(splitByAt[0],"[D]",splitByAt[1]));
+                id = taskList.addTaskToList(new Event(splitByAt[0],"[E]",splitByAt[1]));
                 return "Got it. I've added this task: \n"
                         + taskList.getTask(id).toString()
                         + "\nNow you have " + taskList.getListSize() +" tasks in the list.";
 
             default:
-                return "Error wrong command";
+                throw new DukeException.WrongCommandException();
+//                return "Error wrong command";
         }
     }
-
 }
