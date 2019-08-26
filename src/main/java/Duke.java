@@ -1,10 +1,10 @@
 import model.Task;
 
 import java.util.ArrayList;
-import java.util.List;
+
 
 public class Duke {
-    private List<Task> tasksList;
+    private ArrayList<Task> tasksList;
 
     public Duke(){
         tasksList  = new ArrayList<Task>();
