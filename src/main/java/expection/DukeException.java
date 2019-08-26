@@ -1,3 +1,7 @@
+package expection;
+
+import expection.DukeBaseException;
+
 public class DukeException {
 
     public static class ToDoExceptionDuke extends DukeBaseException {

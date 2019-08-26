@@ -1,3 +1,5 @@
+package expection;
+
 public class DukeBaseException extends Exception{
 
     private String message;
