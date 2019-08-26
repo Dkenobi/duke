@@ -1,4 +1,5 @@
 import model.Deadlines;
+import model.Event;
 import model.Task;
 import model.ToDo;
 
@@ -79,8 +80,15 @@ public class Duke {
                         + "\nNow you have " + taskList.getListSize() +" tasks in the list.";
 
             case "deadline":
-                String[] splitDescriptionDeadline = description.split("/by ");
-                id = taskList.addTaskToList(new Deadlines(splitDescriptionDeadline[0],"[D]",splitDescriptionDeadline[1]));
+                String[] splitByBy = description.split("/by ");
+                id = taskList.addTaskToList(new Deadlines(splitByBy[0],"[D]",splitByBy[1]));
+                return "Got it. I've added this task: \n"
+                        + taskList.getTask(id).toString()
+                        + "\nNow you have " + taskList.getListSize() +" tasks in the list.";
+
+            case "event":
+                String[] splitByAt = description.split("/at ");
+                id = taskList.addTaskToList(new Event(splitByAt[0],"[D]",splitByAt[1]));
                 return "Got it. I've added this task: \n"
                         + taskList.getTask(id).toString()
                         + "\nNow you have " + taskList.getListSize() +" tasks in the list.";

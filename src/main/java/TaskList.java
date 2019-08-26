@@ -21,7 +21,7 @@ public class TaskList {
 
         listString = new StringBuilder("Here are the tasks in your list.");
         for (var task: tasksList){
-            listString.append("\n").append(index++).append(". [").append(task.getStatusIcon()).append("] ").append(task.getDescription());
+            listString.append("\n").append(index++).append(".").append(task.toString());
         }
         return listString.toString();
     }
