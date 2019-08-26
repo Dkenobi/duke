@@ -10,8 +10,9 @@ public class TaskList {
         tasksList = new ArrayList<>();
     }
 
-    public void addTaskToList(Task task){
+    public int addTaskToList(Task task){
         tasksList.add(task);
+        return tasksList.size() - 1;
     }
 
     public String getTaskList(){
@@ -32,5 +33,12 @@ public class TaskList {
         return "Nice I've marked this task as done: \n"
                 + "[" + tasksList.get(zeroIndex).getStatusIcon() + "] "
                 + tasksList.get(zeroIndex).getDescription();
+    }
+    public int getListSize(){
+        return tasksList.size();
+    }
+
+    public Task getTask(int id){
+        return tasksList.get(id);
     }
 }
