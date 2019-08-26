@@ -24,4 +24,13 @@ public class TaskList {
         }
         return listString.toString();
     }
+
+    public String completeTask(int index) {
+        int zeroIndex = index - 1;
+
+        tasksList.get(zeroIndex).setIsDone(true);
+        return "Nice I've marked this task as done: \n"
+                + "[" + tasksList.get(zeroIndex).getStatusIcon() + "] "
+                + tasksList.get(zeroIndex).getDescription();
+    }
 }

@@ -1,16 +1,29 @@
 import model.Task;
 
-import java.util.ArrayList;
-
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 public class Duke {
-    private ArrayList<Task> tasksList;
+    public static void main(String[] args) throws IOException {
+        String input;
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
-    public Duke(){
-        tasksList  = new ArrayList<Task>();
+
+        TaskList taskList = new TaskList();
+        printWelcomeMessage();
+
+        while(!(input = reader.readLine()).isEmpty()) {
+            printLine();
+            System.out.println(enterCommand(taskList,input));
+            printLine();
+
+            if (input.equals("bye"))
+                System.exit(0);
+        }
     }
 
-    public void printWelcomeMessage()  {
+    public static void printWelcomeMessage()  {
         String logo = " ____        _        \n"
                 + "|  _ \\ _   _| | _____ \n"
                 + "| | | | | | | |/ / _ \\\n"
@@ -23,49 +36,30 @@ public class Duke {
         printLine();
     }
 
-    public void printLine() {
+    public static void printLine() {
         System.out.println("____________________________________________________________");
     }
 
-    public String enterCommand(String input) {
+    public static String enterCommand(TaskList taskList, String input) {
         String[] splitString = input.split("\\s+");
 
         switch(splitString[0])
         {
             case "bye": return bye();
-            case "list": return getTasksList();
-            case "done": return doneTask(Integer.parseInt(splitString[1]));
+            case "list": return taskList.getTaskList();
+            case "done": return taskList.completeTask(Integer.parseInt(splitString[1]));
             default:
-                return addTaskToList(input);
+                return addTaskToList(taskList,input);
         }
     }
 
-    private String bye() {
+    public static String bye() {
         return "Bye. Hope to see you again soon!";
     }
 
-    private String addTaskToList(String message) {
-        tasksList.add(new Task(message));
+    private static String addTaskToList(TaskList taskList, String message) {
+        taskList.addTaskToList(new Task(message));
         return "added: " + message;
     }
 
-    private String getTasksList(){
-        String listString;
-        int index = 1;
-
-        listString = "Here are the tasks in your list.";
-        for (var task: tasksList){
-            listString += "\n"+ index++ + ". [" + task.getStatusIcon() + "] " + task.getDescription();
-        }
-        return listString;
-    }
-
-    private String doneTask(int index) {
-        int zeroIndex = index - 1;
-
-        tasksList.get(zeroIndex).setIsDone(true);
-        return "Nice I've marked this task as done: \n"
-                + "[" + tasksList.get(zeroIndex).getStatusIcon() + "] "
-                + tasksList.get(zeroIndex).getDescription();
-    }
 }
