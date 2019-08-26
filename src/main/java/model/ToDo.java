@@ -9,10 +9,6 @@ public class ToDo extends Task{
         this.taskType = taskType;
     }
 
-    public String getTaskType(){
-        return taskType;
-    }
-
     @Override
     public String toString() {
         return " " + taskType + " [" + super.getStatusIcon() + "] "+  description;

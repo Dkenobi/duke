@@ -1,3 +1,4 @@
+import model.Deadlines;
 import model.Task;
 import model.ToDo;
 
@@ -21,8 +22,6 @@ public class Duke {
             System.out.println(enterCommand(taskList,input));
             printLine();
 
-            if (input.contains("bye"))
-                System.exit(0);
         }
     }
 
@@ -48,7 +47,9 @@ public class Duke {
 
         switch(splitString[0])
         {
-            case "bye": return bye();
+            case "bye":
+                System.out.print(bye());
+                System.exit(0);
             case "list": return taskList.getTaskList();
             case "done": return taskList.completeTask(Integer.parseInt(splitString[1]));
             default:
@@ -62,18 +63,28 @@ public class Duke {
 
     private static String addTaskToList(TaskList taskList, String message) {
 
+        int id;
+
         String[] splitString = message.split("\\s+");
-        ArrayList<String> listArgs = new ArrayList<>(Arrays.asList(splitString));
-        listArgs.remove(0);
-        String description = String.join(" ",listArgs);
+        ArrayList<String> descriptionArgs = new ArrayList<>(Arrays.asList(splitString));
+        descriptionArgs.remove(0);
+        String description = String.join(" ",descriptionArgs);
 
         switch(splitString[0])
         {
             case "todo":
-                int id = taskList.addTaskToList(new ToDo(description,"[T]"));
+                id = taskList.addTaskToList(new ToDo(description,"[T]"));
                 return "Got it. I've added this task: \n"
                         + taskList.getTask(id).toString()
                         + "\nNow you have " + taskList.getListSize() +" tasks in the list.";
+
+            case "deadline":
+                String[] splitDescriptionDeadline = description.split("/by ");
+                id = taskList.addTaskToList(new Deadlines(splitDescriptionDeadline[0],"[D]",splitDescriptionDeadline[1]));
+                return "Got it. I've added this task: \n"
+                        + taskList.getTask(id).toString()
+                        + "\nNow you have " + taskList.getListSize() +" tasks in the list.";
+
             default:
                 return "Error wrong command";
         }
