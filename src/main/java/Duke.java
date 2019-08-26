@@ -1,3 +1,5 @@
+import model.Task;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -53,7 +55,7 @@ public class Duke {
 
         listString = "Here are the tasks in your list.";
         for (var task: tasksList){
-            listString += "\n"+ index++ + ". [" + task.getStatusIcon() + "] " + task.description;
+            listString += "\n"+ index++ + ". [" + task.getStatusIcon() + "] " + task.getDescription();
         }
         return listString;
     }
@@ -61,9 +63,9 @@ public class Duke {
     private String doneTask(int index) {
         int zeroIndex = index - 1;
 
-        tasksList.get(zeroIndex).isDone = true;
+        tasksList.get(zeroIndex).setIsDone(true);
         return "Nice I've marked this task as done: \n"
                 + "[" + tasksList.get(zeroIndex).getStatusIcon() + "] "
-                + tasksList.get(zeroIndex).description;
+                + tasksList.get(zeroIndex).getDescription();
     }
 }
