@@ -102,7 +102,6 @@ public class Duke {
 
             default:
                 throw new DukeException.WrongCommandException();
-//                return "Error wrong command";
         }
     }
 }
