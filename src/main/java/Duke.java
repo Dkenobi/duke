@@ -3,12 +3,10 @@ import expection.DukeException;
 import model.Deadlines;
 import model.Event;
 import model.ToDo;
+import util.ConstantHelper;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.io.*;
+import java.util.*;
 
 public class Duke {
     public static void main(String[] args) throws IOException {
@@ -16,8 +14,9 @@ public class Duke {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
         TaskList taskList = new TaskList();
-        printWelcomeMessage();
+        new ReadWriteUtility().loadFile(ConstantHelper.dukeFilePath,taskList);
 
+        printWelcomeMessage();
         while(!(input = reader.readLine()).isEmpty()) {
             printLine();
             try {
@@ -79,7 +78,7 @@ public class Duke {
             case "todo":
                 if (description.equals(""))
                     throw new DukeException.ToDoExceptionDuke();
-                id = taskList.addTaskToList(new ToDo(description,"[T]"));
+                id = taskList.addTaskToList(new ToDo("T",description));
                 return "Got it. I've added this task: \n"
                         + taskList.getTask(id).toString()
                         + "\nNow you have " + taskList.getListSize() +" tasks in the list.";
@@ -88,7 +87,7 @@ public class Duke {
                 if (description.equals(""))
                     throw new DukeException.DeadlineException();
                 String[] splitByBy = description.split("/by ");
-                id = taskList.addTaskToList(new Deadlines(splitByBy[0],"[D]",splitByBy[1]));
+                id = taskList.addTaskToList(new Deadlines("D",splitByBy[0],splitByBy[1]));
                 return "Got it. I've added this task: \n"
                         + taskList.getTask(id).toString()
                         + "\nNow you have " + taskList.getListSize() +" tasks in the list.";
@@ -97,7 +96,7 @@ public class Duke {
                 if (description.equals(""))
                     throw new DukeException.EventException();
                 String[] splitByAt = description.split("/at ");
-                id = taskList.addTaskToList(new Event(splitByAt[0],"[E]",splitByAt[1]));
+                id = taskList.addTaskToList(new Event("E", splitByAt[0],splitByAt[1]));
                 return "Got it. I've added this task: \n"
                         + taskList.getTask(id).toString()
                         + "\nNow you have " + taskList.getListSize() +" tasks in the list.";

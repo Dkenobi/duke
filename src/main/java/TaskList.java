@@ -1,17 +1,22 @@
 import model.Task;
+import util.ConstantHelper;
 
 import java.util.ArrayList;
 
 public class TaskList {
 
     private ArrayList<Task> tasksList;
+    private ArrayList<String> tasksSaveAsList;
 
     public TaskList(){
         tasksList = new ArrayList<>();
+        tasksSaveAsList = new ArrayList<>();;
     }
 
     public int addTaskToList(Task task){
         tasksList.add(task);
+        tasksSaveAsList.add(task.saveToFile());
+        new ReadWriteUtility().saveFile(ConstantHelper.dukeFilePath,tasksSaveAsList);
         return tasksList.size() - 1;
     }
 
@@ -40,5 +45,9 @@ public class TaskList {
 
     public Task getTask(int id){
         return tasksList.get(id);
+    }
+
+    public ArrayList<String> asList(){
+        return tasksSaveAsList;
     }
 }
