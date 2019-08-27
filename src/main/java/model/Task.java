@@ -20,4 +20,8 @@ public class Task {
     public String getDescription(){
         return description;
     }
+
+    public String saveToFile(){
+        return  "N"  + " | " + (isDone ? "1" : "0") +" | " +  description;
+    }
 }
