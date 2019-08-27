@@ -14,7 +14,6 @@ import java.util.Scanner;
 
 public class ReadWriteUtility {
 
-
     public void loadFile(String fullPath, TaskList taskList) {
         try {
             Scanner s = new Scanner(new File(fullPath));

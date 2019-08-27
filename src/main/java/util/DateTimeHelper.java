@@ -6,9 +6,8 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class DateTimeHelper {
-
+    // Convert 2/12/2019 1800 to 2nd of December 2019, 6pm
     public String getFormattedDate(String date) {
-
         SimpleDateFormat inputFormat = new SimpleDateFormat("dd/M/yyyy HHmm");
         Date formattedDate = new Date();
 
@@ -30,7 +29,6 @@ public class DateTimeHelper {
 
         Calendar cal=Calendar.getInstance();
         cal.setTime(formattedDate);
-        //2nd of march 2015
         int day=cal.get(Calendar.DATE);
 
         if(!((day>10) && (day<19)))
