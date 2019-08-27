@@ -4,8 +4,11 @@ import model.Deadlines;
 import model.Event;
 import model.ToDo;
 import util.ConstantHelper;
+import util.DateTimeHelper;
 
 import java.io.*;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class Duke {
@@ -73,6 +76,9 @@ public class Duke {
         descriptionArgs.remove(0);
         String description = String.join(" ",descriptionArgs);
 
+        String pattern = "dd/MM/yyyy HHmm";
+        DateFormat df = new SimpleDateFormat(pattern);
+
         switch(splitString[0])
         {
             case "todo":
@@ -87,7 +93,7 @@ public class Duke {
                 if (description.equals(""))
                     throw new DukeException.DeadlineException();
                 String[] splitByBy = description.split("/by ");
-                id = taskList.addTaskToList(new Deadlines("D",splitByBy[0],splitByBy[1]));
+                id = taskList.addTaskToList(new Deadlines("D",splitByBy[0],new DateTimeHelper().getFormattedDate(splitByBy[1])));
                 return "Got it. I've added this task: \n"
                         + taskList.getTask(id).toString()
                         + "\nNow you have " + taskList.getListSize() +" tasks in the list.";
@@ -96,7 +102,7 @@ public class Duke {
                 if (description.equals(""))
                     throw new DukeException.EventException();
                 String[] splitByAt = description.split("/at ");
-                id = taskList.addTaskToList(new Event("E", splitByAt[0],splitByAt[1]));
+                id = taskList.addTaskToList(new Event("E", splitByAt[0],new DateTimeHelper().getFormattedDate(splitByAt[1])));
                 return "Got it. I've added this task: \n"
                         + taskList.getTask(id).toString()
                         + "\nNow you have " + taskList.getListSize() +" tasks in the list.";
