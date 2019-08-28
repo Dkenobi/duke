@@ -92,7 +92,7 @@ public class Duke {
             case "deadline":
                 if (description.equals(""))
                     throw new DukeException.DeadlineException();
-                String[] splitByBy = description.split("/by ");
+                String[] splitByBy = description.split(" /by ");
                 id = taskList.addTaskToList(new Deadlines("D",splitByBy[0],new DateTimeHelper().getFormattedDate(splitByBy[1])));
                 return "Got it. I've added this task: \n"
                         + taskList.getTask(id).toString()
@@ -101,7 +101,7 @@ public class Duke {
             case "event":
                 if (description.equals(""))
                     throw new DukeException.EventException();
-                String[] splitByAt = description.split("/at ");
+                String[] splitByAt = description.split(" /at ");
                 id = taskList.addTaskToList(new Event("E", splitByAt[0],new DateTimeHelper().getFormattedDate(splitByAt[1])));
                 return "Got it. I've added this task: \n"
                         + taskList.getTask(id).toString()
