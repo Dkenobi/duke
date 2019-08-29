@@ -5,6 +5,7 @@ import model.Event;
 import model.ToDo;
 import util.ConstantHelper;
 import util.DateTimeHelper;
+import util.ReadWriteFileHelper;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -27,7 +28,7 @@ public class CommandInterfaceView {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
         TaskList taskList = new TaskList();
-        new ReadWriteUtility().loadFile(ConstantHelper.dukeFilePath,taskList);
+        new ReadWriteFileHelper().loadFile(ConstantHelper.dukeFilePath,taskList);
 
         printWelcomeMessage();
         while(!(input = reader.readLine()).isEmpty()) {

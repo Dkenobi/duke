@@ -1,5 +1,6 @@
 import model.Task;
 import util.ConstantHelper;
+import util.ReadWriteFileHelper;
 
 import java.util.ArrayList;
 
@@ -16,7 +17,7 @@ public class TaskList {
     public int addTaskToList(Task task){
         tasksList.add(task);
         tasksSaveAsList.add(task.saveToFile());
-        new ReadWriteUtility().saveFile(ConstantHelper.dukeFilePath,tasksSaveAsList);
+        new ReadWriteFileHelper().saveFile(ConstantHelper.dukeFilePath,tasksSaveAsList);
         return tasksList.size() - 1;
     }
 
