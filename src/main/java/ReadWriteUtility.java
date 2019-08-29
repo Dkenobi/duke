@@ -19,7 +19,6 @@ public class ReadWriteUtility {
             Scanner s = new Scanner(new File(fullPath));
 
             while (s.hasNextLine()) {
-
                 String line = s.nextLine();
                 String[] splitLine = line.split(" \\| ");
 
@@ -39,19 +38,15 @@ public class ReadWriteUtility {
             }
             System.out.println("Lists successfully loaded.");
             s.close();
-
         } catch (FileNotFoundException e) {
             System.out.println("File not found.");
         }
     }
 
     public void saveFile(String fullPath, ArrayList<String> taskList) {
-
         try{
-
             Path file = Paths.get(fullPath);
             Files.write(file, taskList, StandardCharsets.UTF_8);
-
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
