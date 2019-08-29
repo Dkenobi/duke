@@ -1,17 +1,21 @@
 package model;
 
-public class Event extends  Task {
+public class Event implements Task {
+
+    private String description;
+    private boolean isDone;
     private String taskType;
     private String date;
 
     public Event(String taskType, String description, String date ){
-        super(description);
+        this.description = description;
+        this.isDone = false;
         this.taskType = taskType;
         this.date = date;
     }
 
     public Event(String taskType, String description, String date, boolean isDone ){
-        super(description);
+        this.description = description;
         this.taskType = taskType;
         this.date = date;
         this.isDone = isDone;
@@ -19,12 +23,27 @@ public class Event extends  Task {
 
     @Override
     public String toString(){
-        return " [" + taskType + "] [" + super.getStatusIcon() + "] "+  description +
+        return " [" + taskType + "] [" + getStatusIcon() + "] "+  description +
                 " (at: " + date + ")";
     }
 
     @Override
+    public void setIsDone(boolean isDone) {
+        this.isDone = isDone;
+    }
+
+    @Override
+    public String getStatusIcon() {
+        return (isDone ? "\u2713" : "\u2718");
+    }
+
+    @Override
+    public String getDescription() {
+        return description;
+    }
+
+    @Override
     public String saveToFile(){
-        return  taskType  + " | " + (super.isDone ? "1" : "0") +" | " +  description + " | " + date;
+        return  taskType  + " | " + (isDone ? "1" : "0") +" | " +  description + " | " + date;
     }
 }
