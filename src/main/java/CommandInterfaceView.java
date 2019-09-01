@@ -73,6 +73,7 @@ public class CommandInterfaceView {
                 System.exit(0);
             case "list": return taskList.getTaskList();
             case "done": return taskList.completeTask(Integer.parseInt(splitString[1]));
+            case "delete": return taskList.deleteTask(Integer.parseInt(splitString[1]));
             default:
                 return addTaskToList(taskList,input);
         }
