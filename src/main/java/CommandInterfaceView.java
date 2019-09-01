@@ -69,7 +69,7 @@ public class CommandInterfaceView {
                 System.out.print(bye());
                 System.exit(0);
             case "list": return printTaskList(taskList.getTaskList());
-            case "done": return taskList.completeTask(Integer.parseInt(splitString[1]));
+            case "done": return completeTask(taskList,Integer.parseInt(splitString[1]));
             case "delete": return taskList.deleteTask(Integer.parseInt(splitString[1]));
             default:
                 return addTaskToList(taskList,input);
@@ -133,5 +133,14 @@ public class CommandInterfaceView {
             listString.append("\n").append(index++).append(".").append(task.toString());
         }
         return listString.toString();
+    }
+
+    private String completeTask(TaskList taskList, int taskId){
+
+        taskList.completedTask(taskId);
+
+        return "Nice I've marked this task as done: \n"
+                + "[" + taskList.getTask(taskId).getStatusIcon() + "] "
+                + taskList.getTask(taskId).getDescription();
     }
 }

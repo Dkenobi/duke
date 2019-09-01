@@ -26,20 +26,15 @@ public class TaskList {
         return this.tasksList;
     }
 
-    public String completeTask(int index) {
-        int zeroIndex = index - 1;
-
-        tasksList.get(zeroIndex).setIsDone(true);
-        return "Nice I've marked this task as done: \n"
-                + "[" + tasksList.get(zeroIndex).getStatusIcon() + "] "
-                + tasksList.get(zeroIndex).getDescription();
+    public void completedTask(int index) {
+        tasksList.get(index - 1).setIsDone(true);
     }
     public int getTasksListSize(){
         return tasksList.size();
     }
 
     public Task getTask(int id){
-        return tasksList.get(id);
+        return tasksList.get(id - 1);
     }
 
     public ArrayList<String> asList(){
