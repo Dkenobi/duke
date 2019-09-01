@@ -35,6 +35,7 @@ public class CommandInterfaceView {
             printLine();
             try {
                 System.out.println(enterCommand(taskList, input));
+                new  ReadWriteFileHelper().saveFile(ConstantHelper.dukeFilePath,saveTaskList(taskList.getTaskList()));
             }
             catch (DukeBaseException e){
                 System.out.println(e.getMessage());
@@ -153,5 +154,14 @@ public class CommandInterfaceView {
                 + "\nNow you have "
                 + taskList.getTasksListSize()
                 +" tasks in the list.";
+    }
+
+    private ArrayList<String> saveTaskList(ArrayList<Task> taskList){
+        ArrayList<String> tasksSaveAsList = new ArrayList<>();;
+        //Find out if can cover ArrayList<Task> to ArrayList<String>
+        for(Task a: taskList)
+            tasksSaveAsList.add(a.saveToFile());
+
+        return tasksSaveAsList;
     }
 }
