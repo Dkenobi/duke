@@ -23,14 +23,6 @@ public class TaskList {
     }
 
     public ArrayList<Task> getTaskList(){
-//        StringBuilder listString;
-//        int index = 1;
-//
-//        listString = new StringBuilder("Here are the tasks in your list.");
-//        for (var task: tasksList){
-//            listString.append("\n").append(index++).append(".").append(task.toString());
-//        }
-//        return listString.toString();
         return this.tasksList;
     }
 
