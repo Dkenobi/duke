@@ -26,9 +26,14 @@ public class TaskList {
         return this.tasksList;
     }
 
-    public void completedTask(int index) {
+    public void completeTask(int index) {
         tasksList.get(index - 1).setIsDone(true);
     }
+
+    public void deleteTask(int index){
+        tasksList.remove(index - 1);
+    }
+
     public int getTasksListSize(){
         return tasksList.size();
     }
@@ -39,14 +44,5 @@ public class TaskList {
 
     public ArrayList<String> asList(){
         return tasksSaveAsList;
-    }
-
-    public String deleteTask(int num){
-        int index = num - 1;
-        String removedTask = tasksSaveAsList.get(index);
-        tasksList.remove(index);
-        tasksSaveAsList.remove(index);
-        return "Noted. I've removed this task: \n"
-                + removedTask + "\nNow you have "+ tasksList.size() +" tasks in the list.";
     }
 }
