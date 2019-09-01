@@ -2,10 +2,7 @@
 
 import expection.DukeBaseException;
 import expection.DukeException;
-import model.Deadlines;
-import model.Event;
-import model.TaskList;
-import model.ToDo;
+import model.*;
 import util.ConstantHelper;
 import util.DateTimeHelper;
 import util.ReadWriteFileHelper;
@@ -71,7 +68,7 @@ public class CommandInterfaceView {
             case "bye":
                 System.out.print(bye());
                 System.exit(0);
-            case "list": return taskList.getTaskList();
+            case "list": return printTaskList(taskList.getTaskList());
             case "done": return taskList.completeTask(Integer.parseInt(splitString[1]));
             case "delete": return taskList.deleteTask(Integer.parseInt(splitString[1]));
             default:
@@ -102,7 +99,7 @@ public class CommandInterfaceView {
                 id = taskList.addTaskToList(new ToDo("T",description));
                 return "Got it. I've added this task: \n"
                         + taskList.getTask(id).toString()
-                        + "\nNow you have " + taskList.getListSize() +" tasks in the list.";
+                        + "\nNow you have " + taskList.getTasksListSize() +" tasks in the list.";
 
             case "deadline":
                 if (description.equals(""))
@@ -111,7 +108,7 @@ public class CommandInterfaceView {
                 id = taskList.addTaskToList(new Deadlines("D",splitByBy[0],new DateTimeHelper().getFormattedDate(splitByBy[1])));
                 return "Got it. I've added this task: \n"
                         + taskList.getTask(id).toString()
-                        + "\nNow you have " + taskList.getListSize() +" tasks in the list.";
+                        + "\nNow you have " + taskList.getTasksListSize() +" tasks in the list.";
 
             case "event":
                 if (description.equals(""))
@@ -120,10 +117,21 @@ public class CommandInterfaceView {
                 id = taskList.addTaskToList(new Event("E", splitByAt[0],new DateTimeHelper().getFormattedDate(splitByAt[1])));
                 return "Got it. I've added this task: \n"
                         + taskList.getTask(id).toString()
-                        + "\nNow you have " + taskList.getListSize() +" tasks in the list.";
+                        + "\nNow you have " + taskList.getTasksListSize() +" tasks in the list.";
 
             default:
                 throw new DukeException.WrongCommandException();
         }
+    }
+
+    private String printTaskList(ArrayList<Task> tasksList) {
+        StringBuilder listString;
+        int index = 1;
+
+        listString = new StringBuilder("Here are the tasks in your list.");
+        for (var task: tasksList){
+            listString.append("\n").append(index++).append(".").append(task.toString());
+        }
+        return listString.toString();
     }
 }

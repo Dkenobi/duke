@@ -22,15 +22,16 @@ public class TaskList {
         return tasksList.size() - 1;
     }
 
-    public String getTaskList(){
-        StringBuilder listString;
-        int index = 1;
-
-        listString = new StringBuilder("Here are the tasks in your list.");
-        for (var task: tasksList){
-            listString.append("\n").append(index++).append(".").append(task.toString());
-        }
-        return listString.toString();
+    public ArrayList<Task> getTaskList(){
+//        StringBuilder listString;
+//        int index = 1;
+//
+//        listString = new StringBuilder("Here are the tasks in your list.");
+//        for (var task: tasksList){
+//            listString.append("\n").append(index++).append(".").append(task.toString());
+//        }
+//        return listString.toString();
+        return this.tasksList;
     }
 
     public String completeTask(int index) {
@@ -41,7 +42,7 @@ public class TaskList {
                 + "[" + tasksList.get(zeroIndex).getStatusIcon() + "] "
                 + tasksList.get(zeroIndex).getDescription();
     }
-    public int getListSize(){
+    public int getTasksListSize(){
         return tasksList.size();
     }
 
