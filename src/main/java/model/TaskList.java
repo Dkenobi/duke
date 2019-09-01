@@ -1,6 +1,5 @@
 package model;
 
-import model.Task;
 import util.ConstantHelper;
 import util.ReadWriteFileHelper;
 
@@ -52,5 +51,14 @@ public class TaskList {
 
     public ArrayList<String> asList(){
         return tasksSaveAsList;
+    }
+
+    public String deleteTask(int num){
+        int index = num - 1;
+        String removedTask = tasksSaveAsList.get(index);
+        tasksList.remove(index);
+        tasksSaveAsList.remove(index);
+        return "Noted. I've removed this task: \n"
+                + removedTask + "\nNow you have "+ tasksList.size() +" tasks in the list.";
     }
 }
