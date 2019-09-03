@@ -44,6 +44,7 @@ public class ReadWriteFileHelper {
             s.close();
         } catch (FileNotFoundException e) {
             System.out.println("File not found.");
+            System.exit(0);
         }
     }
 
