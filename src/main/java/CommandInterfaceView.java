@@ -1,5 +1,3 @@
-
-
 import expection.DukeBaseException;
 import expection.DukeException;
 import model.*;
@@ -72,13 +70,14 @@ public class CommandInterfaceView {
             case "list": return printTaskList(taskList.getTaskList());
             case "done": return completeTask(taskList,Integer.parseInt(splitString[1]));
             case "delete": return deleteTask(taskList,Integer.parseInt(splitString[1]));
+            case "find": return taskList.listFoundTask(splitString[1]);
             default:
                 return addTaskToList(taskList,input);
         }
     }
 
     private String bye() {
-        return "Bye. Hope to see you again soon!";
+        return "Bye. Hope to see you again soon!\n";
     }
 
     private String addTaskToList(TaskList taskList, String message) throws DukeBaseException {

@@ -35,8 +35,17 @@ public class TaskList {
         return tasksList.get(id - 1);
     }
 
-    public ArrayList<Task> findTask() {
-        return null;
+    public String listFoundTask(String findString) {
+
+        StringBuilder listString;
+        int index = 1;
+        listString = new StringBuilder("Here are the tasks in your list.");
+
+        for(Task task: tasksList)
+            if(task.toString().contains(findString))
+                listString.append("\n").append(index++).append(".").append(task.toString());
+
+        return listString.toString();
     }
 
 }
