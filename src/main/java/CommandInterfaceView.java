@@ -60,7 +60,7 @@ public class CommandInterfaceView {
     }
 
     private String enterCommand(TaskList taskList, String input) throws DukeBaseException {
-        String[] splitString = input.split("\\s+");
+        String[] splitString = input.split("\\s+",2);
 
         switch(splitString[0])
         {
