@@ -69,7 +69,7 @@ public class CommandInterfaceView {
                 System.exit(0);
             case "list": return printTaskList(taskList.getTaskList());
             case "done": return completeTask(taskList,Integer.parseInt(splitString[1]));
-            case "delete": return deleteTask(taskList,Integer.parseInt(splitString[1]));
+//            case "delete": return deleteTask(taskList,Integer.parseInt(splitString[1]));
             default:
                 return addTaskToList(taskList,input);
         }
@@ -143,16 +143,16 @@ public class CommandInterfaceView {
                 + taskList.getTask(taskId).getDescription();
     }
 
-    private String deleteTask(TaskList taskList, int taskId){
-        String removedTask = taskList.getTask(taskId).toString();
-        taskList.deleteTask(taskId);
-
-        return "Noted. I've removed this task: \n"
-                + removedTask
-                + "\nNow you have "
-                + taskList.getTasksListSize()
-                +" tasks in the list.";
-    }
+//    private String deleteTask(TaskList taskList, int taskId){
+//        String removedTask = taskList.getTask(taskId).toString();
+//        taskList.deleteTask(taskId);
+//
+//        return "Noted. I've removed this task: \n"
+//                + removedTask
+//                + "\nNow you have "
+//                + taskList.getTasksListSize()
+//                +" tasks in the list.";
+//    }
 
     private ArrayList<String> saveTaskList(ArrayList<Task> taskList){
         ArrayList<String> tasksSaveAsList = new ArrayList<>();;
