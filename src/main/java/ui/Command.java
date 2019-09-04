@@ -1,6 +1,5 @@
 package ui;
 
-import expection.DukeException;
 import model.TaskList;
 
 public abstract class Command {
