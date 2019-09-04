@@ -36,11 +36,9 @@ public class TaskList {
     }
 
     public String listFoundTask(String findString) {
-
-        StringBuilder listString;
+        StringBuilder listString = new StringBuilder();
         int index = 1;
-        listString = new StringBuilder("Here are the tasks in your list.");
-
+//        listString = new StringBuilder("Here are the tasks in your list.");
         for(Task task: tasksList)
             if(task.toString().contains(findString))
                 listString.append("\n").append(index++).append(".").append(task.toString());
