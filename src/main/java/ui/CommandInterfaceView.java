@@ -78,7 +78,7 @@ public class CommandInterfaceView {
     }
 
     public void printFoundList(String foundListString){
-        System.out.println("Here are the tasks in your list."
+        System.out.println("Here are the matching tasks in your list:"
                 + foundListString);
 
     }
