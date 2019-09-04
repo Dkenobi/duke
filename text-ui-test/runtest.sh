@@ -7,12 +7,13 @@ then
 fi
 
 # delete output from previous run
-if [ -e "./ACTUAL.TXT" ]
+if [ -e "./ACTUAL.txt" ]
 then
-    rm ACTUAL.TXT
+    rm ACTUAL.txt
 fi
 
 cd .. 
+./gradlew clean
 
 # compile the code into the bin folder, terminates if error occurred
 if ! ./gradlew build

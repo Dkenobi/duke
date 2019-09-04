@@ -5,13 +5,13 @@ list
 delete 5
 find read book
 find book
-deadline return book /by 2/12/2019 1800
+deadline return Table /by 2/12/2019 1800
 done 5
 list
 delete 5
 event project meeting /at Mon 2-4pm
 done 5
-listq
+list
 delete 5
 list
 bye
