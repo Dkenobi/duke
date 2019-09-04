@@ -25,7 +25,7 @@ public class Duke {
                 c.execute(taskList,cli);
                 isExit = c.isExit();
                 cli.printLine();
-//                new  ReadWriteFileHelper().saveFile(ConstantHelper.dukeFilePath,saveTaskList(taskList.getTaskList()));
+                new  ReadWriteFileHelper().saveFile(ConstantHelper.dukeFilePath,cli.saveTaskList(taskList.getTaskList()));
             }
             catch (DukeBaseException e){
                 System.out.println(e.getMessage());

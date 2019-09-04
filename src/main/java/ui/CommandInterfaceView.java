@@ -72,7 +72,7 @@ public class CommandInterfaceView {
                 +" tasks in the list.");
     }
 
-    private ArrayList<String> saveTaskList(ArrayList<Task> taskList){
+    public ArrayList<String> saveTaskList(ArrayList<Task> taskList){
         ArrayList<String> tasksSaveAsList = new ArrayList<>();;
         //Find out if can cover ArrayList<Task> to ArrayList<String>
         for(Task a: taskList)
