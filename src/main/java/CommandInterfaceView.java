@@ -69,7 +69,7 @@ public class CommandInterfaceView {
                 System.exit(0);
             case "list": return printTaskList(taskList.getTaskList());
             case "done": return completeTask(taskList,Integer.parseInt(splitString[1]));
-            case "delete": return deleteTask(taskList,Integer.parseInt(splitString[1]));
+//            case "delete": return deleteTask(taskList,Integer.parseInt(splitString[1]));
             default:
                 return addTaskToList(taskList,input);
         }
@@ -159,7 +159,6 @@ public class CommandInterfaceView {
         //Find out if can cover ArrayList<Task> to ArrayList<String>
         for(Task a: taskList)
             tasksSaveAsList.add(a.saveToFile());
-
         return tasksSaveAsList;
     }
 }
