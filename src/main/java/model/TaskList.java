@@ -12,7 +12,7 @@ public class TaskList {
 
     public int addTaskToList(Task task){
         tasksList.add(task);
-        return tasksList.size() - 1;
+        return tasksList.size();
     }
 
     public ArrayList<Task> getTaskList(){
@@ -32,7 +32,7 @@ public class TaskList {
     }
 
     public Task getTask(int id){
-        return tasksList.get(id);
+        return tasksList.get(id - 1);
     }
 
     public String listFoundTask(String findString) {
