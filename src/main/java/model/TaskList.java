@@ -32,7 +32,7 @@ public class TaskList {
     }
 
     public Task getTask(int id){
-        return tasksList.get(id - 1);
+        return tasksList.get(id);
     }
 
     public String listFoundTask(String findString) {
