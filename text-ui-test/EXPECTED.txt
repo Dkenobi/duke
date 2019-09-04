@@ -38,11 +38,11 @@ Noted. I've removed this task:
 Now you have 4 tasks in the list.
 ____________________________________________________________
 ____________________________________________________________
-Here are the tasks in your list.
+Here are the matching tasks in your list:
 1. [T] [✓] read book
 ____________________________________________________________
 ____________________________________________________________
-Here are the tasks in your list.
+Here are the matching tasks in your list:
 1. [T] [✓] read book
 2. [D] [✘] return book (by: June 6th)
 ____________________________________________________________
