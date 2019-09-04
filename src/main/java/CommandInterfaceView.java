@@ -1,5 +1,3 @@
-
-
 import expection.DukeBaseException;
 import expection.DukeException;
 import model.*;
@@ -21,7 +19,7 @@ public class CommandInterfaceView {
     }
 
     /**
-     * Method to call when View model is started.
+     * Method to call when Duke is started.
      */
     public void start() throws IOException {
         String input;
