@@ -146,8 +146,6 @@ public class CommandInterfaceView {
     }
 
     private String deleteTask(TaskList taskList, int taskId){
-
-        System.out.println("remove ID " + taskId);
         String removedTask = taskList.getTask(taskId).toString();
         taskList.deleteTask(taskId);
 
