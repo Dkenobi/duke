@@ -159,7 +159,6 @@ public class CommandInterfaceView {
         //Find out if can cover ArrayList<Task> to ArrayList<String>
         for(Task a: taskList)
             tasksSaveAsList.add(a.saveToFile());
-
         return tasksSaveAsList;
     }
 }
