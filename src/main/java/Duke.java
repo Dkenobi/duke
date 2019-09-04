@@ -6,8 +6,11 @@ import util.ConstantHelper;
 import util.ReadWriteFileHelper;
 
 public class Duke {
-    public static void main(String[] args) {
 
+    public Duke(){
+    }
+
+    public void run (){
         CommandInterfaceView cli = new CommandInterfaceView();
 
         TaskList taskList = new TaskList();
@@ -31,5 +34,9 @@ public class Duke {
                 System.out.println(e.getMessage());
             }
         }
+    }
+
+    public static void main(String[] args) {
+       new Duke().run();
     }
 }
