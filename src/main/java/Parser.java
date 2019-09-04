@@ -43,7 +43,7 @@ public class Parser {
         switch (splitString[0]) {
             case "todo":
                 if (description.equals(""))
-                    throw new DukeException.DeadlineException();
+                    throw new DukeException.ToDoExceptionDuke();
                 return new ToDoCommand(description);
             case "deadline":
                 if (description.equals(""))
