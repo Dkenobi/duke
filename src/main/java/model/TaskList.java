@@ -23,9 +23,9 @@ public class TaskList {
         tasksList.get(index - 1).setIsDone(true);
     }
 
-//    public void deleteTask(int index){
-//        tasksList.remove(index - 1);
-//    }
+    public void deleteTask(int index){
+        tasksList.remove(index - 1);
+    }
 
     public int getTasksListSize(){
         return tasksList.size();
