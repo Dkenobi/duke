@@ -1,11 +1,13 @@
 package model;
-import java.util.List;
 
 /**
  * The user of this interface have control on how each method are handled.
  * This interface give the user a guideline of the required method to be implemented in the sub-class.
+ *
+ * @author Dillen
+ * @version 0.1
+ * @since 2019-08-13
  */
-
 public interface Task {
     /**
      * This method is used to set the Task status of the task.
