@@ -12,6 +12,11 @@ public class DeadlineCommand extends Command{
         this.date = date;
     }
 
+    /**
+     *
+     * @param taskList the runtime Task List.
+     * @param ui the runtime of the ui elements.
+     */
     @Override
     public void execute(TaskList taskList, CommandInterfaceView ui) {
         int id = taskList.addTaskToList(new Deadlines("D",taskDescription,date));
