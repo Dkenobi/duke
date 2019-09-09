@@ -16,8 +16,16 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * The ReadWriteFileHelper class helps to save the current state of the current Task ArrayList and
+ * load the text file into the Task ArrayList at runtime.
+ */
 public class ReadWriteFileHelper {
-
+    /**
+     * This method help to load the previously saved Task ArrayList and help to retain the state from the previous runtime.
+     * @param fullPath the directory of the save Task ArrayList text file.
+     * @param taskList the current runtime of the TaskList which the save state will be loaded into it.
+     */
     public void loadFile(String fullPath, TaskList taskList) {
         try {
             Scanner s = new Scanner(new File(fullPath));
@@ -48,6 +56,11 @@ public class ReadWriteFileHelper {
         }
     }
 
+    /**
+     * This method save the TaskList in a text file when executed.
+     * @param fullPath the directory of the save Task ArrayList text file.
+     * @param taskList the String format of the current state of the taskList.
+     */
     public void saveFile(String fullPath, ArrayList<String> taskList) {
         try{
             Path file = Paths.get(fullPath);
