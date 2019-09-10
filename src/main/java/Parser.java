@@ -9,6 +9,10 @@ import java.util.Arrays;
 /**
  * The Parser class help to determine the action along with the the additional argument to
  * determine the command to execute.
+ *
+ * @author Dillen
+ * @version 0.1
+ * @since 2019-08-13
  */
 public class Parser {
     /**
