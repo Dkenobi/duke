@@ -4,7 +4,10 @@ import model.TaskList;
 
 public class DoneCommand extends Command{
     private int taskId;
-
+    /**
+     * This constructor takes create an instance of the task id.
+     * @param taskId the id of the task.
+     */
     public DoneCommand(int taskId){
         this.taskId = taskId;
     }
