@@ -16,7 +16,7 @@ public class ByeCommand extends Command{
      * @param ui the runtime of the ui elements.
      */
     @Override
-    public void execute(TaskList taskList, CommandInterfaceView ui) {
-        ui.bye();
+    public String execute(TaskList taskList, CommandInterfaceView ui) {
+        return ui.bye();
     }
 }

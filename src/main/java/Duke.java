@@ -37,7 +37,7 @@ public class Duke {
                 String fullCommand = cli.readCommand();
                 cli.printLine();
                 Command c = Parser.parse(fullCommand);
-                c.execute(taskList,cli);
+                System.out.println(c.execute(taskList,cli));
                 isExit = c.isExit();
                 cli.printLine();
                 new  ReadWriteFileHelper().saveFile(ConstantHelper.dukeFilePath,cli.saveTaskList(taskList.getTaskList()));

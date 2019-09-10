@@ -19,7 +19,7 @@ public class FindCommand extends Command{
      * @param ui the runtime of the ui elements.
      */
     @Override
-    public void execute(TaskList taskList, CommandInterfaceView ui) {
-        ui.printFoundList(taskList.listFoundTask(findString));
+    public String execute(TaskList taskList, CommandInterfaceView ui) {
+        return ui.printFoundList(taskList.listFoundTask(findString));
     }
 }

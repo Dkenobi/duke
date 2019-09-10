@@ -9,7 +9,7 @@ public class ListCommand extends Command{
      * @param ui the runtime of the ui elements.
      */
     @Override
-    public void execute(TaskList taskList, CommandInterfaceView ui) {
-        ui.printTaskList(taskList.getTaskList());
+    public String execute(TaskList taskList, CommandInterfaceView ui) {
+        return ui.printTaskList(taskList.getTaskList());
     }
 }

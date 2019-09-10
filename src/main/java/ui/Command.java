@@ -29,5 +29,5 @@ public abstract class Command {
      * @param taskList the runtime Task List.
      * @param ui the runtime of the ui elements.
      */
-    abstract public void execute(TaskList taskList,CommandInterfaceView ui);
+    abstract public String execute(TaskList taskList,CommandInterfaceView ui);
 }

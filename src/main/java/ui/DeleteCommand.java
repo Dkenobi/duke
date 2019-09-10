@@ -17,7 +17,7 @@ public class DeleteCommand extends Command{
      */
     //Need to reimplement this method again.
     @Override
-    public void execute(TaskList taskList, CommandInterfaceView ui) {
-        ui.printDeleteTask(taskList,taskId);
+    public String execute(TaskList taskList, CommandInterfaceView ui) {
+        return ui.printDeleteTask(taskList,taskId);
     }
 }

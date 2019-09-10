@@ -48,13 +48,13 @@ public class CommandInterfaceView {
     /**
      * This method handle the ui of the bye command.
      */
-    public void bye() {
-        System.out.println("Bye. Hope to see you again soon!");
+    public String bye() {
+       return "Bye. Hope to see you again soon!";
     }
     /**
      * This method handle the ui of the list command.
      */
-    public void printTaskList(ArrayList<Task> tasksList) {
+    public String printTaskList(ArrayList<Task> tasksList) {
         StringBuilder listString;
         int index = 1;
 
@@ -62,7 +62,7 @@ public class CommandInterfaceView {
         for (var task: tasksList){
             listString.append("\n").append(index++).append(".").append(task.toString());
         }
-        System.out.println(listString);
+        return listString.toString();
     }
 
     /**
@@ -70,12 +70,12 @@ public class CommandInterfaceView {
      * @param taskList the runtime task list
      * @param taskId the id of the task
      */
-    public void  printCompleteTask(TaskList taskList, int taskId){
+    public String  printCompleteTask(TaskList taskList, int taskId){
         taskList.completeTask(taskId);
 
-        System.out.println( "Nice I've marked this task as done: \n"
+        return "Nice I've marked this task as done: \n"
                 + "[" + taskList.getTask(taskId).getStatusIcon() + "] "
-                + taskList.getTask(taskId).getDescription());
+                + taskList.getTask(taskId).getDescription();
     }
 
     /**
@@ -83,15 +83,15 @@ public class CommandInterfaceView {
      * @param taskList the runtime task list
      * @param taskId the id of the task
      */
-    public void printDeleteTask(TaskList taskList, int taskId){
+    public String printDeleteTask(TaskList taskList, int taskId){
         String removedTask = taskList.getTask(taskId).toString();
         taskList.deleteTask(taskId);
 
-        System.out.println( "Noted. I've removed this task: \n"
+        return "Noted. I've removed this task: \n"
                 + removedTask
                 + "\nNow you have "
                 + taskList.getTasksListSize()
-                +" tasks in the list.");
+                +" tasks in the list.";
     }
 
     /**
@@ -112,10 +112,9 @@ public class CommandInterfaceView {
      * This method handles the ui of the find command.
      * @param foundListString the query input from the user.
      */
-    public void printFoundList(String foundListString){
-        System.out.println("Here are the matching tasks in your list:"
-                + foundListString);
-
+    public String printFoundList(String foundListString){
+        return "Here are the matching tasks in your list:"
+                + foundListString;
     }
 
     /**
@@ -124,8 +123,8 @@ public class CommandInterfaceView {
      * @param sizeOfTaskList the current size of the task to determine the index position
      *                       when printed out
      */
-    public void printToDo(String task, int sizeOfTaskList){
-        System.out.println("Got it. I've added this task: \n"
-                + task + "\nNow you have " + sizeOfTaskList + " tasks in the list.");
+    public String printToDo(String task, int sizeOfTaskList){
+        return "Got it. I've added this task: \n"
+                + task + "\nNow you have " + sizeOfTaskList + " tasks in the list.";
     }
 }

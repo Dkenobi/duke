@@ -18,7 +18,7 @@ public class DoneCommand extends Command{
      * @param ui the runtime of the ui elements.
      */
     @Override
-    public void execute(TaskList taskList, CommandInterfaceView ui) {
-        ui.printCompleteTask(taskList,taskId);
+    public String execute(TaskList taskList, CommandInterfaceView ui) {
+        return ui.printCompleteTask(taskList,taskId);
     }
 }
