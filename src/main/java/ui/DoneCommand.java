@@ -9,6 +9,11 @@ public class DoneCommand extends Command{
         this.taskId = taskId;
     }
 
+    /**
+     * This method help to set the Task to completed.
+     * @param taskList the runtime Task List.
+     * @param ui the runtime of the ui elements.
+     */
     @Override
     public void execute(TaskList taskList, CommandInterfaceView ui) {
         ui.printCompleteTask(taskList,taskId);

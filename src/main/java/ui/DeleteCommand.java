@@ -8,6 +8,13 @@ public class DeleteCommand extends Command{
     public DeleteCommand(int taskId){
         this.taskId = taskId;
     }
+
+    /**
+     * This method help to delete the task by execute the the deleteTask method from TaskList.
+     * @param taskList the runtime Task List.
+     * @param ui the runtime of the ui elements.
+     */
+    //Need to reimplement this method again.
     @Override
     public void execute(TaskList taskList, CommandInterfaceView ui) {
         ui.printDeleteTask(taskList,taskId);
