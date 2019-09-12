@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class DeadlineCommandTest {
     @Test
-    void deadlineCommandTest() throws DukeBaseException {
+    public void testDeadlineCommand() throws DukeBaseException {
 
         String output = "Got it. I've added this task: \n" +
                 " [D] [✘] return Table (by: 2nd of December 2019 6 pm)\n" +

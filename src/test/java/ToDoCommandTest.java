@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ToDoCommandTest {
     @Test
-    void toDoCommandTest() throws DukeBaseException {
+    public void testToDoCommandtest() throws DukeBaseException {
 
         String output = "Got it. I've added this task: \n" +
                 " [T] [✘] to watch GOT\n" +

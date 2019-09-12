@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class DeleteCommandTest {
     @Test
-    void deleteCommandTest() throws DukeBaseException {
+    public void testDeleteCommand() throws DukeBaseException {
 
         String output  = "Noted. I've removed this task: \n" +
                 " [T] [✘] to watch GOT\n" +

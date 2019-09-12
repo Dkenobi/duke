@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class TaskListTest {
 
     @Test
-    void getTaskListSizeTest(){
+    public void testGetTaskListSize(){
         TaskList taskList = new TaskList();
         taskList.addTaskToList(new ToDo("T","watch GOT"));
         taskList.addTaskToList(new Deadlines("D","Have to pick some stuff","9/10/2019"));
@@ -18,7 +18,7 @@ public class TaskListTest {
     }
 
     @Test
-    void getTaskListTest(){
+    public void testGetTaskList(){
         TaskList taskList = new TaskList();
         taskList.addTaskToList(new ToDo("T","watch GOT"));
         taskList.addTaskToList(new Deadlines("D","Have to pick some stuff","9/10/2019"));
@@ -27,7 +27,7 @@ public class TaskListTest {
     }
 
     @Test
-    void deleteTaskListTest(){
+    public void testDeleteTaskList(){
         TaskList taskList = new TaskList();
         taskList.addTaskToList(new ToDo("T","watch GOT"));
         taskList.addTaskToList(new Deadlines("D","Have to pick some stuff","9/10/2019"));
@@ -37,7 +37,7 @@ public class TaskListTest {
     }
 
     @Test
-    void findTaskListTest(){
+    public void testFindTaskList(){
         TaskList taskList = new TaskList();
         taskList.addTaskToList(new ToDo("T","watch GOT"));
         taskList.addTaskToList(new Deadlines("D","Have to pick some stuff","9/10/2019"));

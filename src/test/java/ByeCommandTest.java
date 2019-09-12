@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ByeCommandTest {
     @Test
-    void byeCommandTest() throws DukeBaseException {
+    public void testByeCommand() throws DukeBaseException {
 
         CommandInterfaceView cli = new CommandInterfaceView();
         TaskList taskList = new TaskList();

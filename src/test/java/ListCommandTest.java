@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ListCommandTest {
     @Test
-    void listCommandTest() throws DukeBaseException {
+    public void testListCommand() throws DukeBaseException {
 
         String output = "Here are the tasks in your list.\n" +
                 "1. [T] [✘] to watch GOT\n" +

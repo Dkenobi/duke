@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class EventCommandTest {
     @Test
-    void eventCommandTest() throws DukeBaseException {
+    public void testEventCommand() throws DukeBaseException {
 
         String output = "Got it. I've added this task: \n" +
                 " [E] [✘] project meeting (by: Mon 2-4pm)\n" +
