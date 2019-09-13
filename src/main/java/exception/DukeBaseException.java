@@ -1,6 +1,6 @@
 package exception;
 
-public class DukeBaseException extends Exception{
+public class DukeBaseException extends Exception {
 
     private String message;
 

@@ -16,33 +16,32 @@ public class Duke {
     /**
      * The constructor of duke.
      */
-    public Duke(){
+    public Duke() {
     }
 
     /**
      * This method runs the main duke application in a loop till the exit command is executed.
      */
-    public void run (){
+    public void run() {
         CommandInterfaceView cli = new CommandInterfaceView();
 
         TaskList taskList = new TaskList();
-        new ReadWriteFileHelper().loadFile(ConstantHelper.dukeFilePath,taskList);
+        new ReadWriteFileHelper().loadFile(ConstantHelper.dukeFilePath, taskList);
 
         cli.printWelcomeMessage();
         cli.printLine();
         boolean isExit = false;
 
-        while(!isExit) {
+        while (!isExit) {
             try {
                 String fullCommand = cli.readCommand();
                 cli.printLine();
                 Command c = Parser.parse(fullCommand);
-                System.out.println(c.execute(taskList,cli));
+                System.out.println(c.execute(taskList, cli));
                 isExit = c.isExit();
                 cli.printLine();
-                new  ReadWriteFileHelper().saveFile(ConstantHelper.dukeFilePath,cli.saveTaskList(taskList.getTaskList()));
-            }
-            catch (DukeBaseException e){
+                new ReadWriteFileHelper().saveFile(ConstantHelper.dukeFilePath, cli.saveTaskList(taskList.getTaskList()));
+            } catch (DukeBaseException e) {
                 System.out.println(e.getMessage());
             }
         }
@@ -50,9 +49,10 @@ public class Duke {
 
     /**
      * This method is where the main duke is execute to perform the task base on the input of the user.
+     *
      * @param args
      */
     public static void main(String[] args) {
-       new Duke().run();
+        new Duke().run();
     }
 }

@@ -23,6 +23,7 @@ import java.util.Scanner;
 public class ReadWriteFileHelper {
     /**
      * This method help to load the previously saved Task ArrayList and help to retain the state from the previous runtime.
+     *
      * @param fullPath the directory of the save Task ArrayList text file.
      * @param taskList the current runtime of the TaskList which the save state will be loaded into it.
      */
@@ -34,15 +35,15 @@ public class ReadWriteFileHelper {
                 String line = s.nextLine();
                 String[] splitLine = line.split(" \\| ");
 
-                switch(splitLine[0]){
+                switch (splitLine[0]) {
                     case "T":
-                        taskList.addTaskToList(new ToDo(splitLine[0],splitLine[2],splitLine[1].equals("1")));
+                        taskList.addTaskToList(new ToDo(splitLine[0], splitLine[2], splitLine[1].equals("1")));
                         break;
                     case "D":
-                        taskList.addTaskToList(new Deadlines(splitLine[0],splitLine[2],splitLine[3],splitLine[1].equals("1")));
+                        taskList.addTaskToList(new Deadlines(splitLine[0], splitLine[2], splitLine[3], splitLine[1].equals("1")));
                         break;
                     case "E":
-                        taskList.addTaskToList(new Event(splitLine[0],splitLine[2],splitLine[3],splitLine[1].equals("1")));
+                        taskList.addTaskToList(new Event(splitLine[0], splitLine[2], splitLine[3], splitLine[1].equals("1")));
                         break;
                     default:
                         break;
@@ -58,11 +59,12 @@ public class ReadWriteFileHelper {
 
     /**
      * This method save the TaskList in a text file when executed.
+     *
      * @param fullPath the directory of the save Task ArrayList text file.
      * @param taskList the String format of the current state of the taskList.
      */
     public void saveFile(String fullPath, ArrayList<String> taskList) {
-        try{
+        try {
             Path file = Paths.get(fullPath);
             Files.write(file, taskList, StandardCharsets.UTF_8);
         } catch (IOException e) {

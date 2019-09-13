@@ -14,6 +14,7 @@ public class DateTimeHelper {
 
     /**
      * This method parse the given date in dd/M/yyyy HHmm and return in dnd of MMM YYYY, HMMaa
+     *
      * @param date take in a string of the date
      * @return a string in MMM YYYY, HMMaa
      */
@@ -33,11 +34,11 @@ public class DateTimeHelper {
             else
                 timeFormat = hour + " " + period;
 
-            Calendar cal=Calendar.getInstance();
+            Calendar cal = Calendar.getInstance();
             cal.setTime(formattedDate);
-            int day=cal.get(Calendar.DATE);
+            int day = cal.get(Calendar.DATE);
 
-            if(!((day>10) && (day<19)))
+            if (!((day > 10) && (day < 19)))
                 switch (day % 10) {
                     case 1:
                         return new SimpleDateFormat("d'st' 'of' MMMM yyyy").format(formattedDate) + " " + timeFormat;

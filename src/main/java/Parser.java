@@ -17,6 +17,7 @@ import java.util.Arrays;
 public class Parser {
     /**
      * This method determine the command to be execute base on the input given
+     *
      * @param fullCommand the user input at runtime.
      * @return the action to be executed base on the input given.
      * @throws DukeBaseException throws and error when a wrong command is entered.
@@ -44,6 +45,7 @@ public class Parser {
     /**
      * Similar to the above function however, this function only handle the various task
      * to be executed.
+     *
      * @param message the input after the command
      * @return the action to be executed base on the input given.
      * @throws DukeBaseException throws and error if missing information is entered.
@@ -60,8 +62,9 @@ public class Parser {
                     throw new DukeException.ToDoExceptionDuke();
                 return new ToDoCommand(description);
             case "deadline":
-                if (description.equals(""))
+                if (description.equals("")) {
                     throw new DukeException.DeadlineException();
+                }
                 String[] splitByBy = description.split(" /by ");
                 return new DeadlineCommand(splitByBy[0], new DateTimeHelper().getFormattedDate(splitByBy[1]));
             case "event":
