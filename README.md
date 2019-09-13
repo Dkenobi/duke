@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/Dkenobi/duke.svg?branch=master)](https://travis-ci.org/Dkenobi/duke)
 # Setting up
 
 **Prerequisites**
